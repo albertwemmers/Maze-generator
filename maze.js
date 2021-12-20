@@ -30,24 +30,25 @@ class Maze {
             let j = current.cNum;
             current.visited = true;
             // Don't understand yet (
-            for(let x = Math.max(0, i-1); x <= Math.min(i+1, rowLimit); x++) {
-                for(let y = Math.max(0, j-1); y <= Math.min(j+1, columnLimit); y++) {
-                    // 
+            for(let x = Math.max(0, i - 1); x <= Math.min(i + 1, rowLimit); x++) {
+                for(let y = Math.max(0, j - 1); y <= Math.min(j + 1, columnLimit); y++) {
+                    // )
                     if(x !== i || y !== j) {
                         tArray.push(this.grid[x][y]);
                     }
                 }
             }
-            genNewTcell = () => {
-                return tArray[Math.round(Math.random() * ((tArray.length - 1) - 0) + 0)];
+            const genNewTcell = () => {
+                return tArray[Math.round(Math.random() * (tArray.length - 1))];
             }
 
             let tCell = genNewTcell();
             while (!tCell.visited) {
+                console.log(tCell);
                 current = this.grid[tCell.rNum][tCell.cNum];
                 current.visited = true;
                 tArray = [];
-            }
+            } 
                 tArray.splice(tCell);
                 tCell = genNewTcell();
         } 
