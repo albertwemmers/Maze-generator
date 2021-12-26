@@ -24,29 +24,27 @@ class Maze {
         const columnLimit = this.width - 1;
         const rowLimit = this.height - 1;
         let tArray = []
+        const genNewTcell = () => {
+            return tArray[Math.round(Math.random() * (tArray.length - 1))];
+        }
 
         for (let a = 0; a < this.width * this.height; a++) {
             let i = current.rNum;
             let j = current.cNum;
             current.visited = true;
-            // Don't understand yet (
             for(let x = Math.max(0, i - 1); x <= Math.min(i + 1, rowLimit); x++) {
                 for(let y = Math.max(0, j - 1); y <= Math.min(j + 1, columnLimit); y++) {
-                    // )
                     if(x !== i || y !== j) {
                         tArray.push(this.grid[x][y]);
                     }
                 }
             }
-            const genNewTcell = () => {
-                return tArray[Math.round(Math.random() * (tArray.length - 1))];
-            }
 
             let tCell = genNewTcell();
             while (!tCell.visited) {
-                console.log(tCell);
                 current = this.grid[tCell.rNum][tCell.cNum];
                 current.visited = true;
+                console.log(current);
                 tArray = [];
             } 
                 tArray.splice(tCell);
@@ -69,6 +67,6 @@ class Cell {
     }
 };
 
-let maze = new Maze(5, 5);
+let maze = new Maze(3, 3);
 maze.setup().Generate();
 
