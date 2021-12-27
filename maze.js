@@ -52,20 +52,20 @@ class Maze {
                 }
                 if ((tCell.rNum - xOffset[3]) == cX && (tCell.cNum - yOffset[3]) == cY) {
                     tCell.walls.bottem = false;
-                        this.grid[cX][cY].walls.top = false;
+                    this.grid[cX][cY].walls.top = false;
                 }
                 if ((tCell.rNum - xOffset[4]) == cX && (tCell.cNum - yOffset[4]) == cY) {
                     tCell.walls.right = false;
-                        this.grid[cX][cY].walls.left = false;
+                    this.grid[cX][cY].walls.left = false;
                 }
 
                 current = this.grid[tCell.rNum][tCell.cNum]
-                console.log(current);
                 current.visited = true;
-                tArray = [];
+                tArray = []; 
+                console.log(current)
             }
-        } 
-    }
+        }
+    } 
 };
 
 class Cell {
@@ -82,14 +82,6 @@ class Cell {
     }
 };
 
-let maze = new Maze(3, 3);
+let maze = new Maze(10, 10);
 maze.setup().Generate();
 
-//     let i = current.rNum;
-//     let j = current.cNum;
-//     current.visited = true;
-//     for(let x = Math.max(0, i - 1); x <= Math.min(i + 1, rowLimit); x++) {
-//         for(let y = Math.max(0, j - 1); y <= Math.min(j + 1, columnLimit); y++) {
-//             if((x !== i || y !== j) && this.grid[x][y].visited == false) {
-//                 tArray.push(this.grid[x][y]);
-//             }
