@@ -87,5 +87,5 @@ class Cell {
 let maze = new Maze(5, 5);
 maze.setup().Generate();
 
-console.log("Look at each cell in the grind, it's location and what walls are removed.");
+console.log("Look at each cell in the grid, it's location and what walls are removed.");
 console.log(maze.grid);
