@@ -24,9 +24,6 @@ class Maze {
         const columnLimit = this.width - 1;
         const rowLimit = this.height - 1;
         let tArray = []
-        const genNewTcell = () => {
-            return tArray[Math.round(Math.random() * (tArray.length - 1))];
-        }
 
         for (let a = 0; a < this.width * this.height; a++) {
             let i = current.rNum;
@@ -34,21 +31,19 @@ class Maze {
             current.visited = true;
             for(let x = Math.max(0, i - 1); x <= Math.min(i + 1, rowLimit); x++) {
                 for(let y = Math.max(0, j - 1); y <= Math.min(j + 1, columnLimit); y++) {
-                    if(x !== i || y !== j) {
+                    if((x !== i || y !== j) && this.grid[x][y].visited == false) {
                         tArray.push(this.grid[x][y]);
                     }
                 }
             }
-
-            let tCell = genNewTcell();
-            while (!tCell.visited) {
+            if (tArray.length > 0) {
+                let tCell = tArray[Math.round(Math.random() * (tArray.length - 1))];
                 current = this.grid[tCell.rNum][tCell.cNum];
-                current.visited = true;
+
                 console.log(current);
+                current.visited = true;
                 tArray = [];
-            } 
-                tArray.splice(tCell);
-                tCell = genNewTcell();
+            }
         } 
     }
 };
