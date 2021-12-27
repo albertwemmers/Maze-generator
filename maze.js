@@ -35,17 +35,31 @@ class Maze {
             for (let i = 0; i < 4; i++) {
                 let x = cX + xOffset[i];   
                 let y = cY + yOffset[i];
-                if (!(x < 0 || x > rowLimit || y < 0 || y > columnLimit)) {
-                    if (this.grid[x][y].visited == false) {
-                        tArray.push(this.grid[x][y]);
-                    }
+                if (!(x < 0 || x > rowLimit || y < 0 || y > columnLimit) && this.grid[x][y].visited == false) {
+                    tArray.push(this.grid[x][y]);
                 }
             }
                         
             if (tArray.length > 0) {
                 let tCell = tArray[Math.round(Math.random() * (tArray.length - 1))];
-                current = this.grid[tCell.rNum][tCell.cNum];
+                if ((tCell.rNum - xOffset[1]) == cX && (tCell.cNum - yOffset[1]) == cY) {
+                    tCell.walls.top = false;
+                    this.grid[cX][cY].walls.bottem = false;
+                }
+                if ((tCell.rNum - xOffset[2]) == cX && (tCell.cNum - yOffset[2]) == cY) {
+                    tCell.walls.left = false;
+                    this.grid[cX][cY].walls.right = false;
+                }
+                if ((tCell.rNum - xOffset[3]) == cX && (tCell.cNum - yOffset[3]) == cY) {
+                    tCell.walls.bottem = false;
+                        this.grid[cX][cY].walls.top = false;
+                }
+                if ((tCell.rNum - xOffset[4]) == cX && (tCell.cNum - yOffset[4]) == cY) {
+                    tCell.walls.right = false;
+                        this.grid[cX][cY].walls.left = false;
+                }
 
+                current = this.grid[tCell.rNum][tCell.cNum]
                 console.log(current);
                 current.visited = true;
                 tArray = [];
