@@ -61,7 +61,9 @@ class Maze {
 
                 current = this.grid[tCell.rNum][tCell.cNum]
                 current.visited = true;
-                tArray = []; 
+                tArray = [];
+                
+                console.log(current);
             }
         }
     } 
