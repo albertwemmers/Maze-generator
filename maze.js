@@ -62,7 +62,6 @@ class Maze {
                 current = this.grid[tCell.rNum][tCell.cNum]
                 current.visited = true;
                 tArray = []; 
-                console.log(current)
             }
         }
     } 
@@ -82,17 +81,9 @@ class Cell {
     }
 };
 
+
 let maze = new Maze(5, 5);
 maze.setup().Generate();
-console.log(maze.grid)
 
-//     const columnLimit = this.width - 1;
-//     const rowLimit = this.height - 1;
-//     const i = current.rNum;
-//     const j = current.cNum;
-//
-//     for(let x = Math.max(0, i - 1); x <= Math.min(i + 1, rowLimit); x++) {
-//         for(let y = Math.max(0, j - 1); y <= Math.min(j + 1, columnLimit); y++) {
-//             if(x !== i || y !== j) {
-//                 console.log(this.grid[x][y])
-//             }
+console.log("Look at each cell in the grind, it's location and what walls are removed.");
+console.log(maze.grid);
